@@ -398,7 +398,7 @@ h2 {
     transition: all .3s ease;
 }
 .html .pic-holder {
-    background-image: url("img/LOGO_HTML_512x512.png");
+    background-image: url("../img/LOGO_HTML_512x512.png");
 }
 .css .pic-holder {
     background-image: url("../img/LOGO_CSS_512x605.png");
