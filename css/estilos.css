@@ -398,20 +398,20 @@ h2 {
     transition: all .3s ease;
 }
 .html .pic-holder {
-    background-image: url("../img/LOGO_HTML_512x512.png");
+    background-image: url("./img/LOGO_HTML_512x512.png");
 }
 .css .pic-holder {
-    background-image: url("../img/LOGO_CSS_512x605.png");
+    background-image: url("./img/LOGO_CSS_512x605.png");
 }
 .js .pic-holder {
     background-size: 85%;
-    background-image: url("../img/LOGO_JS_372x378.png");
+    background-image: url("./img/LOGO_JS_372x378.png");
 }
 .vue .pic-holder {
-    background-image: url("../img/php.png");
+    background-image: url("./img/php.png");
 }
 .python .pic-holder {
-    background-image: url("../img/LOGO_kotlin.png");
+    background-image: url("./img/LOGO_kotlin.png");
 }
 .back {
     background-image: linear-gradient(to bottom, #c7c7c7, firebrick);
