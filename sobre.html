@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="./img/main.js" defer></script>
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="icon" type="image/png" href="./img/assets/ico/icone.png" id="favicon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <!-- Barra de Navegação -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="a.php"><i class="fas fa-home"></i> Principal</a></li>
+            <li><a href="a1.php"><i class="fas fa-user"></i> Sobre</a></li>
+            <li><a href="contato.php"><i class="fas fa-envelope"></i> Contato</a></li>
+        </ul>
+    </nav>
+
+    <div style="max-width: 900px; margin: 40px auto; padding: 20px;  border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+        <header style="text-align: center; margin-bottom: 20px;">
+            <h1 style="font-family: Arial, sans-serif; color: #ffff;">Sobre</h1>
+        </header>
+        <section style="display: flex; align-items: center; flex-direction: column; text-align: center;">
+
+            <div style="font-family: Arial, sans-serif; color: #ffff;">
+                <h2 style="font-size: 24px; margin-bottom: 10px; color: #007bff;">Helton Rodrigues</h5>
+                <p style="font-size: 16px; margin-bottom: 10px;">Sou um desenvolvedor web apaixonado por criar interfaces de usuário intuitivas e funcionais. Tenho experiência em HTML, CSS, JavaScript, e estou sempre aprendendo novas tecnologias para melhorar minhas habilidades.</p>
+                <p style="font-size: 16px; margin-bottom: 10px;">No meu tempo livre, gosto de explorar novas ferramentas de desenvolvimento, ler sobre tecnologia e colaborar em projetos open-source.</p>
+            </div>
+            <h1 style="font-size: 24px; margin-bottom: 10px; color: #007bff;">Habilidade</h1>
+            <p class="p">
+                Desenvolvedor Front-end com experiência em desenvolvimento Full Stack Jr., especializado em JavaScript, HTML, CSS, PHP, SQL e Kotlin Jr.
+
+            </p>
+            <div id="wrapper">
+                <div class="cwrapper">
+                    <div class="card html">
+                        <div class="front">
+                            <div class="pic-holder"></div>
+                            <h5>HTML</h5>
+                        </div>
+                        <div class="back">
+                            <p>Marcação utilizada na construção de páginas na Web.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="cwrapper">
+                    <div class="card css">
+                        <div class="front">
+                            <div class="pic-holder"></div>
+                            <h5>CSS</h5>
+                        </div>
+                        <div class="back">
+                            <p>Um mecanismo para adicionar estilos a uma página web. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="cwrapper">
+                    <div class="card js">
+                        <div class="front">
+                            <div class="pic-holder"></div>
+                            <h5>Javascript</h5>
+                        </div>
+                        <div class="back">
+                            <p>Programação orientada a objetos desenvolvida.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="cwrapper">
+                    <div class="card vue">
+                        <div class="front">
+                            <div class="pic-holder"></div>
+                            <h5>PHP</h5>
+                        </div>
+                        <div class="back">
+                            <p>interpretada livre, usada originalmente apenas para o desenvolvimento de aplicações presentes e atuantes no lado do servidor, capazes de gerar conteúdo dinâmico na World Wide Web.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="cwrapper">
+                    <div class="card python">
+                        <div class="front">
+                            <div class="pic-holder"></div>
+                            <h5>Kotlin</h5>
+                        </div>
+                        <div class="back">
+                            <p>Programação multiplataforma, orientada a objetos e funcional.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+<script>
+    // script.js
+    (function() {
+        const normalFavicon = './img/assets/ico/icone.png';
+        const pulsanteFavicon = './img/assets/ico/icone2.png';
+        const favicon = document.getElementById('favicon');
+
+        let isPulsante = false;
+
+        function toggleFavicon() {
+            if (isPulsante) {
+                favicon.href = normalFavicon;
+            } else {
+                favicon.href = pulsanteFavicon;
+            }
+            isPulsante = !isPulsante;
+        }
+
+        setInterval(toggleFavicon, 1000); // Alterna a cada segundo
+    })();
+
+
+    const container = document.querySelector(".container");
+    const containercarrossel = container.querySelector(".container-carrossel");
+    const carrossel = container.querySelector(".carrossel");
+    const carrosselItems = carrossel.querySelectorAll(".carrossel-item");
+
+    let isMouseDown = false;
+    let currentMousePos = 0;
+    let lastMousePos = 0;
+    let lastMoveTo = 0;
+    let moveTo = 0;
+    let autoRotate = 0.5; // Velocidade de rotação automática em graus por frame
+
+    const createcarrossel = () => {
+        const carrosselProps = onResize();
+        const length = carrosselItems.length;
+        const degress = 360 / length;
+        const gap = 20;
+        const tz = distanceZ(carrosselProps.w, length, gap);
+
+        const fov = calculateFov(carrosselProps);
+        const height = calculateHeight(tz);
+
+        container.style.width = tz * 2 + gap * length + "px";
+        container.style.height = height + "px";
+
+        carrosselItems.forEach((item, i) => {
+            const degressByItem = degress * i + "deg";
+            item.style.setProperty("--rotatey", degressByItem);
+            item.style.setProperty("--tz", tz + "px");
+        });
+    };
+
+    const lerp = (a, b, n) => {
+        return n * (a - b) + b;
+    };
+
+    const distanceZ = (widthElement, length, gap) => {
+        return widthElement / 2 / Math.tan(Math.PI / length) + gap;
+    };
+
+    const calculateHeight = (z) => {
+        const t = Math.atan((90 * Math.PI) / 180 / 2);
+        const height = t * 2 * z;
+
+        return height;
+    };
+
+    const calculateFov = (carrosselProps) => {
+        const perspective = window
+            .getComputedStyle(containercarrossel)
+            .perspective.split("px")[0];
+
+        const length =
+            Math.sqrt(carrosselProps.w * carrosselProps.w) +
+            Math.sqrt(carrosselProps.h * carrosselProps.h);
+        const fov = 2 * Math.atan(length / (2 * perspective)) * (180 / Math.PI);
+        return fov;
+    };
+
+    const getPosX = (x) => {
+        currentMousePos = x;
+
+        moveTo = currentMousePos < lastMousePos ? moveTo - 2 : moveTo + 2;
+
+        lastMousePos = currentMousePos;
+    };
+
+    const update = () => {
+        lastMoveTo = lerp(moveTo, lastMoveTo, 0.05);
+        carrossel.style.setProperty("--rotatey", lastMoveTo + "deg");
+        moveTo += autoRotate; // Incrementa a rotação automática
+
+        requestAnimationFrame(update);
+    };
+
+    const onResize = () => {
+        const boundingcarrossel = containercarrossel.getBoundingClientRect();
+
+        const carrosselProps = {
+            w: boundingcarrossel.width,
+            h: boundingcarrossel.height,
+        };
+
+        return carrosselProps;
+    };
+
+    const initEvents = () => {
+        carrossel.addEventListener("mousedown", () => {
+            isMouseDown = true;
+            carrossel.style.cursor = "grabbing";
+        });
+        carrossel.addEventListener("mouseup", () => {
+            isMouseDown = false;
+            carrossel.style.cursor = "grab";
+        });
+        container.addEventListener("mouseleave", () => (isMouseDown = false));
+
+        carrossel.addEventListener(
+            "mousemove",
+            (e) => isMouseDown && getPosX(e.clientX)
+        );
+
+        carrossel.addEventListener("touchstart", () => {
+            isMouseDown = true;
+            carrossel.style.cursor = "grabbing";
+        });
+        carrossel.addEventListener("touchend", () => {
+            isMouseDown = false;
+            carrossel.style.cursor = "grab";
+        });
+        container.addEventListener(
+            "touchmove",
+            (e) => isMouseDown && getPosX(e.touches[0].clientX)
+        );
+
+        window.addEventListener("resize", createcarrossel);
+
+        update();
+        createcarrossel();
+    };
+
+    initEvents();
+</script>
